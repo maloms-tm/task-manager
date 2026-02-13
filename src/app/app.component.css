@@ -1,0 +1,13 @@
+/**
+ * App Component Styles
+ */
+
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/**
+ * Global app-level styles could go here, but we keep them
+ * in the component to maintain encapsulation
+ */

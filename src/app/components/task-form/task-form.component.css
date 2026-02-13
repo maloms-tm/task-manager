@@ -1,0 +1,174 @@
+/**
+ * Task Form Component Styles
+ * 
+ * Clean, modern form styling with proper spacing and validation states
+ */
+
+/* Form Container */
+.task-form-container {
+  padding: 1rem;
+}
+
+/* Dialog Title */
+h2[mat-dialog-title] {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+/* Dialog Content */
+mat-dialog-content {
+  padding: 1rem 0 !important;
+  min-height: 400px;
+}
+
+/* Form Styles */
+.task-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 0.5rem 0;
+}
+
+/* Full Width Fields */
+.full-width {
+  width: 100%;
+}
+
+/* Form Row (for side-by-side fields) */
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.half-width {
+  flex: 1;
+}
+
+/* Form Field Styling */
+mat-form-field {
+  font-size: 1rem;
+}
+
+/* Input Focus States */
+mat-form-field.mat-focused {
+  /* Angular Material handles this automatically */
+}
+
+/* Textarea Specific */
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Hint Text */
+mat-hint {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* Error Messages */
+mat-error {
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+/* Dialog Actions */
+mat-dialog-actions {
+  padding: 1.5rem 0 0 0 !important;
+  margin-top: 1rem;
+  border-top: 2px solid #f0f0f0;
+  gap: 1rem;
+}
+
+/* Button Styles */
+button[mat-button] {
+  padding: 0.5rem 1.5rem !important;
+  font-size: 1rem !important;
+}
+
+button[mat-raised-button] {
+  padding: 0.5rem 2rem !important;
+  font-size: 1rem !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+button[mat-raised-button]:hover:not([disabled]) {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Date Picker Icon */
+mat-datepicker-toggle {
+  color: #667eea;
+}
+
+/* Select Dropdown */
+mat-select {
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .half-width {
+    width: 100%;
+  }
+  
+  h2[mat-dialog-title] {
+    font-size: 1.5rem;
+  }
+}
+
+/**
+ * CUSTOM VALIDATION STATES
+ * These styles are applied by Angular Material based on form state
+ */
+
+/* Valid Field (has been touched and is valid) */
+mat-form-field.mat-form-field-invalid {
+  /* Material automatically applies error styling */
+}
+
+/* Pristine Field (not yet touched) */
+mat-form-field.ng-pristine {
+  /* No special styling */
+}
+
+/* Dirty Field (has been modified) */
+mat-form-field.ng-dirty.ng-valid {
+  /* Could add success indicator here if desired */
+}
+
+/**
+ * INTERVIEW TIPS:
+ * 
+ * CSS Specificity:
+ * - Element selector (div): 1 point
+ * - Class selector (.class): 10 points
+ * - ID selector (#id): 100 points
+ * - Inline style: 1000 points
+ * - !important: Overrides everything (use sparingly!)
+ * 
+ * Flexbox vs Grid:
+ * - Flexbox: One-dimensional layout (row OR column)
+ * - Grid: Two-dimensional layout (rows AND columns)
+ * - Use flexbox for simple layouts like our form-row
+ * 
+ * rem vs px vs em:
+ * - px: Fixed pixels (doesn't scale)
+ * - em: Relative to parent font size
+ * - rem: Relative to root font size (better for accessibility)
+ * - We use rem for spacing, px for borders
+ */
