@@ -1,0 +1,110 @@
+<div class="task-list-container">
+  <!-- Header Section -->
+  <div class="header">
+    <h1>📋 Task Manager</h1>
+    <p class="subtitle">Organize your work, achieve your goals</p>
+  </div>
+
+  <!-- Filter Component -->
+  <app-task-filter (filterChange)="onFilterChange($event)"></app-task-filter>
+
+  <!-- Add Task Button -->
+  <div class="actions">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="openAddTaskDialog()"
+      class="add-task-btn"
+    >
+      <mat-icon>add</mat-icon>
+      Add New Task
+    </button>
+  </div>
+
+  <!-- Task Statistics -->
+  <div class="task-stats">
+    <div class="stat-card">
+      <div class="stat-number">{{ tasks.length }}</div>
+      <div class="stat-label">Total Tasks</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ getCompletedCount() }}</div>
+      <div class="stat-label">Completed</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ getInProgressCount() }}</div>
+      <div class="stat-label">In Progress</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">{{ getPendingCount() }}</div>
+      <div class="stat-label">Pending</div>
+    </div>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="filteredTasks.length === 0" class="empty-state">
+    <mat-icon class="empty-icon">inbox</mat-icon>
+    <h2>No tasks found</h2>
+    <p *ngIf="tasks.length === 0">
+      Click "Add New Task" to create your first task!
+    </p>
+    <p *ngIf="tasks.length > 0">Try adjusting your filters</p>
+  </div>
+
+  <!-- Task Grid -->
+  <div class="task-grid" *ngIf="filteredTasks.length > 0">
+    <mat-card
+      *ngFor="let task of filteredTasks"
+      class="task-card"
+      [class.overdue]="isOverdue(task)"
+    >
+      <!-- Task Header -->
+      <mat-card-header>
+        <mat-card-title>{{ task.title }}</mat-card-title>
+        <div class="card-actions">
+          <button
+            mat-icon-button
+            (click)="openEditTaskDialog(task)"
+            color="primary"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button (click)="deleteTask(task.id)" color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </mat-card-header>
+
+      <!-- Task Content -->
+      <mat-card-content>
+        <p class="task-description">{{ task.description }}</p>
+
+        <!-- Task Metadata -->
+        <div class="task-metadata">
+          <div class="metadata-item">
+            <mat-icon class="metadata-icon">event</mat-icon>
+            <span>{{ formatDate(task.dueDate) }}</span>
+          </div>
+
+          <!-- Overdue Warning -->
+          <div *ngIf="isOverdue(task)" class="metadata-item overdue-warning">
+            <mat-icon class="metadata-icon">warning</mat-icon>
+            <span>Overdue</span>
+          </div>
+        </div>
+
+        <!-- Priority and Status Chips -->
+        <div class="chips-container">
+          <mat-chip-set>
+            <mat-chip [class]="getPriorityClass(task.priority)">
+              {{ task.priority }}
+            </mat-chip>
+            <mat-chip [class]="getStatusClass(task.status)">
+              {{ task.status }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

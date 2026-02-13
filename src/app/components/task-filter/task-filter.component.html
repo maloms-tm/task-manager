@@ -1,0 +1,48 @@
+<mat-card class="filter-card">
+  <mat-card-content>
+    <div class="filter-container">
+      <h3 class="filter-title">🔍 Filter Tasks</h3>
+
+      <div class="filter-controls">
+        <!-- Priority Filter -->
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Priority</mat-label>
+          <mat-select
+            [(ngModel)]="selectedPriority"
+            (selectionChange)="onPriorityChange()"
+          >
+            <mat-option
+              *ngFor="let priority of priorityOptions"
+              [value]="priority"
+            >
+              {{ priority }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Status Filter -->
+        <mat-form-field appearance="outline" class="filter-field">
+          <mat-label>Status</mat-label>
+          <mat-select
+            [(ngModel)]="selectedStatus"
+            (selectionChange)="onStatusChange()"
+          >
+            <mat-option *ngFor="let status of statusOptions" [value]="status">
+              {{ status }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!-- Reset Button -->
+        <button
+          mat-stroked-button
+          (click)="resetFilters()"
+          class="reset-btn"
+          [disabled]="selectedPriority === 'All' && selectedStatus === 'All'"
+        >
+          Reset Filters
+        </button>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
