@@ -72,17 +72,4 @@ body {
   margin-bottom: 1rem;
 }
 
-/**
- * INTERVIEW TIP:
- * 
- * Q: What is box-sizing: border-box?
- * A: It changes how width/height are calculated.
- *    - content-box (default): width = content only
- *    - border-box: width = content + padding + border
- *    This makes sizing more predictable and easier to work with.
- * 
- * Q: What does -webkit-font-smoothing do?
- * A: It makes fonts look smoother/thinner on Mac/iOS.
- *    antialiased: Smooths font on the pixel level
- *    It's a visual enhancement, not required.
- */
+
