@@ -110,25 +110,4 @@
   </mat-dialog-actions>
 </div>
 
-<!--
-  FORM DIRECTIVES EXPLAINED:
-  
-  [formGroup]="taskForm" - Binds the entire form to the FormGroup in component
-  formControlName="title" - Binds individual input to a FormControl
-  
-  CONDITIONAL STYLING:
-  *ngIf="hasError('title')" - Only shows error if field has error
-  [disabled]="taskForm.invalid" - Disables button when form is invalid
-  
-  MATERIAL COMPONENTS:
-  mat-form-field - Container for input with label, hints, and errors
-  appearance="outline" - Material Design style (can be 'fill' or 'outline')
-  mat-label - The floating label
-  mat-hint - Helper text (shows character count)
-  mat-error - Error message (only shown when invalid)
-  
-  INTERVIEW TIP:
-  Q: Why use formControlName instead of ngModel?
-  A: We're using Reactive Forms. formControlName connects template inputs to
-     the FormGroup in the component. ngModel is for Template-Driven Forms.
--->
+
